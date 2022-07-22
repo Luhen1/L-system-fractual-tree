@@ -1,7 +1,7 @@
 {
   "include": [
-    "es2016.js",
-    "libraries/es2016.js",
+    "*.js",
+    "libraries/*.js",
     "c:\\Users\\lucas\\.vscode\\extensions\\samplavigne.p5-vscode-1.2.11\\p5types\\global.d.ts"
   ]
 }

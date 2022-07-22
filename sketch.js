@@ -1,26 +1,37 @@
-var axiom = "A";
+var axiom = "F";
 var sentence = axiom; // sentence is going to start with a axiom
 
-var rule1 = {
-  ifAisFound: "A",
-  thenAApareceAsAB: "AB"
-}
+var rules = []
 
-var rule2 = {
-  ifBIsFound: "B",
-  thenBApareceAsA: "A"
+// this is for you to learn how axiom works in a simple way
+// rules[0] = {
+//   a: "A",
+//   b: "ABC"
+// }
+
+// rules[1] = {
+//   a: "B",
+//   b: "A"
+// }
+
+rules[0] = {
+  a: "F",
+  b: "FF+[+F-F-F]-[-F+F+F]"
 }
 
 function generate() {
   var nextSentence = "";
   for(var i = 0; i < sentence.length; i++){
     var current = sentence.charAt(i);
-    if (current == rule1.ifAisFound) {
-
-      nextSentence += rule1.thenAApareceAsAB // if a in rule1 is found. substitute it with b from rule1
-      } else if (current == rule2.ifBIsFound) {
-      nextSentence += rule2.thenBApareceAsA; 
-    } else {
+    var found = false;
+    for(var j = 0; j < rules.length; j++){
+      if ( current == rules[j].a){
+          found = true;
+          nextSentence += rules[j].b;
+          break;
+      }
+    }
+    if (!found){
       nextSentence += current; 
     }
   }
