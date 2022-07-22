@@ -1,3 +1,4 @@
+var angle;
 var axiom = "F";
 var sentence = axiom; // sentence is going to start with a axiom
 var len = 100;
@@ -24,6 +25,7 @@ rules[0] = {
 }
 
 function generate() {
+  len *= 0.5;
   var nextSentence = "";
   for(var i = 0; i < sentence.length; i++){
     var current = sentence.charAt(i);
@@ -47,7 +49,7 @@ function generate() {
 function turtle() {
   background(51);
   translate(width/2, height);
-  stroke(255);
+  stroke(255, 100);
   for (var i = 0; i < sentence.length; i++) {
     var current = sentence.charAt(i);
 
@@ -55,9 +57,9 @@ function turtle() {
       line(0,0,0,-len);
       translate(0, -len);
     } else if(current == '+'){
-      rotate(PI/6);
+      rotate(angle);
     } else if(current == '-'){
-      rotate(-PI/6);
+      rotate(-angle);
     } else if(current == '['){
       push();
     } else if(current == ']'){
@@ -67,7 +69,8 @@ function turtle() {
 }
 
 function setup() {
-  createCanvas(400,400)
+  createCanvas(400,400);
+  angle = radians(25);
   background(51);
   createP(axiom);
   turtle();
